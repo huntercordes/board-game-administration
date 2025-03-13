@@ -1,19 +1,54 @@
 import "./App.css";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Navbar from "./components/NavBar";
 import Home from "./pages/Home";
-import { useState } from "react"; // Import useState
+import AdminLogin from "./pages/AdminLogin";
+
+// Protected route logic
+function ProtectedRoute({ element }) {
+  const { user } = useAuth();
+  return user ? element : <Navigate to="/login" />;
+}
 
 function App() {
-  const [showAddGame, setShowAddGame] = useState(false); // Define setShowAddGame state
+  const [showAddGame, setShowAddGame] = useState(false);
+  
+  return (
+    <AuthProvider>
+      <Router>
+        <AppContent showAddGame={showAddGame} setShowAddGame={setShowAddGame} />
+      </Router>
+    </AuthProvider>
+  );
+}
+
+function AppContent({ showAddGame, setShowAddGame }) {
+  const location = useLocation();
+  const hideNavbar = location.pathname === "/login";
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const onLoginSuccess = () => {
+    console.log("Login successful!");
+    navigate("/"); // Redirect after login
+  };
 
   return (
-    <Router>
-      <Navbar setShowAddGame={setShowAddGame} /> {/* Pass setShowAddGame to Navbar */}
+    <>
+      {!hideNavbar && <Navbar setShowAddGame={setShowAddGame} />}
       <Routes>
-        <Route path="/" element={<Home showAddGame={showAddGame} setShowAddGame={setShowAddGame} />} />
+        <Route path="/login" element={<AdminLogin onLoginSuccess={onLoginSuccess} />} /> {/* Pass it here */}
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute element={<Home showAddGame={showAddGame} setShowAddGame={setShowAddGame} />} />
+          }
+        />
       </Routes>
-    </Router>
+    </>
   );
 }
 
