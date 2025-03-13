@@ -1,44 +1,85 @@
+/* Full page layout */
 .homeContainer {
-    padding: 20px;
-    background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .homeTitle {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .homeDescription {
-    font-size: 1.1rem;
-    color: #666;
-    max-width: 800px;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  .homeImage {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .homeButton {
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .homeButton:hover {
-    background-color: #2980b9;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Main content layout */
+.contentContainer {
+  display: flex;
+  flex-grow: 1;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Sidebar filter menu */
+.filterSection {
+  width: 250px;
+  min-width: 250px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-right: 2px solid #ccc;
+  height: 100%;
+}
+
+/* Board games section */
+.gameSection {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Navbar styling */
+.navbar {
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+/* Title styling */
+.homeTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Description styling */
+.homeDescription {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Image styling */
+.homeImage {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Button styling */
+.homeButton {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.homeButton:hover {
+  background-color: #2980b9;
+}
