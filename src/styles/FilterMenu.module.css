@@ -1,6 +1,55 @@
 .filterMenu {
-    flex: 1;
-    padding: 10px;
-    border-left: 1px solid #ccc;
-  }
-  
+  flex: 1;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  background-color: #f9f9f9; /* Light background for the filter menu */
+  overflow-y: auto;
+  position: absolute; /* To keep it fixed below the navbar */
+  top: 60px; /* Adjust based on the height of your navbar */
+  bottom: 0;
+  width: 250px;
+}
+
+.filterMenu h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.filterMenu label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.filterMenu input[type="radio"] {
+  margin-right: 10px;
+}
+
+.filterMenu select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.filterMenu input[type="radio"] {
+  margin-right: 8px;
+}
+
+.filterMenu button {
+  background-color: #f80643;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.filterMenu button:hover {
+  background-color: #c10536;
+}

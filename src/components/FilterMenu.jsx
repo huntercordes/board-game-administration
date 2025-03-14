@@ -1,7 +1,14 @@
 import React from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/FilterMenu.module.css";
 
-const FilterMenu = ({ selectedFilter, setSelectedFilter, selectedCategory, setSelectedCategory }) => {
+const FilterMenu = ({
+  selectedFilter,
+  setSelectedFilter,
+  selectedCategory,
+  setSelectedCategory,
+  handleApplyFilters,
+  handleClearFilters,
+}) => {
   return (
     <div className={styles.filterMenu}>
       <h3>Filters</h3>
@@ -59,14 +66,19 @@ const FilterMenu = ({ selectedFilter, setSelectedFilter, selectedCategory, setSe
           <option value="party">Party</option>
           <option value="family">Family</option>
           <option value="abstract">Abstract</option>
-          {/* Add more categories here */}
         </select>
         Category
       </label>
+
+      {/* Apply & Clear Filters Buttons */}
+      <button onClick={handleApplyFilters} className={styles.applyButton}>
+        Apply Filters
+      </button>
+      <button onClick={handleClearFilters} className={styles.clearButton}>
+        Clear Filters
+      </button>
     </div>
   );
 };
 
 export default FilterMenu;
-
-
