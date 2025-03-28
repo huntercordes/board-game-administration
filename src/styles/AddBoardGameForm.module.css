@@ -1,6 +1,6 @@
 .modal {
   position: fixed;
-  top: 10%; /* Added space from the top to avoid overlap with navbar */
+  top: 10%; /* Added space from the top to avoid overlapping with navbar */
   left: 50%;
   transform: translateX(-50%);
   padding: 20px;
@@ -10,8 +10,8 @@
   width: 400px;
   max-width: 90%;
   text-align: center;
-  height: 80vh; /* Limit height to 80% of the viewport height */
-  overflow-y: auto; /* Allow scrolling if content exceeds height */
+  height: 80vh; 
+  overflow-y: auto; 
 }
 
 .modal h3 {

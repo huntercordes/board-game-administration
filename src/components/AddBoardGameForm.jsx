@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import { ref, push, set } from "firebase/database"; // Firebase functions
-import { database } from "../firebaseConfig"; // Import Firebase config
-import styles from "../styles/AddBoardGameForm.module.css"; // Your CSS styling
+import { ref, push, set } from "firebase/database"; 
+import { database } from "../firebaseConfig";
+import styles from "../styles/AddBoardGameForm.module.css"; 
 
 const AddBoardGameForm = ({ handleAddGame, setShowAddGame }) => {
-  // State for each input field
+  
   const [gameName, setGameName] = useState("");
-  const [timeDuration, setTimeDuration] = useState(""); // Time duration in minutes
-  const [shelfNumber, setShelfNumber] = useState(""); // Shelf number
+  const [timeDuration, setTimeDuration] = useState(""); 
+  const [shelfNumber, setShelfNumber] = useState(""); 
   const [playerCount, setPlayerCount] = useState(""); // Player count (min-max)
   const [category, setCategory] = useState(""); // Category (strategy, family, etc.)
-  const [description, setDescription] = useState(""); // Description of the game
-  const [rules, setRules] = useState(""); // Rules of the game
-  const [difficultyLevel, setDifficultyLevel] = useState(""); // Difficulty level (easy, medium, hard)
+  const [description, setDescription] = useState(""); 
+  const [rules, setRules] = useState(""); 
+  const [difficultyLevel, setDifficultyLevel] = useState(""); 
   const [gameVideo, setGameVideo] = useState(""); // Video URL of the game (optional)
-  const [error, setError] = useState(null); // Error state
+  const [error, setError] = useState(null); 
 
-  // Function to handle form submission
+  // This is the function to handle form submission
   const handleSubmit = async () => {
     if (
       gameName.trim() &&
@@ -30,7 +30,7 @@ const AddBoardGameForm = ({ handleAddGame, setShowAddGame }) => {
       gameVideo.trim()
     ) {
       try {
-        // Push data to Firebase
+        // Pushes data to Firebase
         const newGameRef = push(ref(database, "games"));
         await set(newGameRef, {
           name: gameName,
@@ -44,10 +44,10 @@ const AddBoardGameForm = ({ handleAddGame, setShowAddGame }) => {
           gameVideo,
         });
         
-        // Call the existing function to update state after adding
+        
         handleAddGame({ name: gameName, timeDuration, shelfNumber, playerCount, category, description, rules, difficultyLevel, gameVideo });
-        setShowAddGame(false); // Close the form after adding game
-        setError(null); // Clear any previous error
+        setShowAddGame(false); // Closes the form after adding game
+        setError(null);
       } catch (error) {
         setError("Error adding game. Please try again.");
         console.error("Error adding game:", error);

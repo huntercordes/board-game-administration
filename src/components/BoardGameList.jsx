@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styles from "../styles/BoardGameList.module.css"; // Your styling
+import styles from "../styles/BoardGameList.module.css"; 
 
 const BoardGameList = ({ games, handleDeleteGame, handleEditGame }) => {
-  const [editGameId, setEditGameId] = useState(null); // Track which game is being edited
+  const [editGameId, setEditGameId] = useState(null); // To track which game is being edited
   const [editedGame, setEditedGame] = useState({
     name: "",
     timeDuration: "",
@@ -16,7 +16,7 @@ const BoardGameList = ({ games, handleDeleteGame, handleEditGame }) => {
   });
 
   const handleEdit = (game) => {
-    // Set the game being edited and pre-fill the form with current values
+  
     setEditGameId(game.id);
     setEditedGame({
       name: game.name,
@@ -33,9 +33,9 @@ const BoardGameList = ({ games, handleDeleteGame, handleEditGame }) => {
 
   const handleSaveEdit = (e) => {
     e.preventDefault();
-    // Call the handleEditGame function with the updated details
+    
     handleEditGame(editGameId, editedGame);
-    setEditGameId(null); // Reset the edit state
+    setEditGameId(null); // Resets the edit state
   };
 
   const handleChange = (e) => {
@@ -48,7 +48,6 @@ const BoardGameList = ({ games, handleDeleteGame, handleEditGame }) => {
       {games.map((game) => (
         <div key={game.id} className={styles.gameCard}>
           {editGameId === game.id ? (
-            // If this game is being edited, show the edit form
             <form onSubmit={handleSaveEdit}>
               <div>
                 <label>Name:</label>
@@ -139,9 +138,7 @@ const BoardGameList = ({ games, handleDeleteGame, handleEditGame }) => {
               </div>
               <button type="submit">Save</button>
             </form>
-          ) : (
-            // Display the game details and edit/delete buttons
-            <>
+          ) : (            <>
               <h3>{game.name}</h3>
               <p><strong>Time Duration:</strong> {game.timeDuration} minutes</p>
               <p><strong>Shelf Number:</strong> {game.shelfNumber}</p>

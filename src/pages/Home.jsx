@@ -10,12 +10,12 @@ import styles from "../styles/Home.module.css";
 
 const Home = ({ showAddGame, setShowAddGame }) => {
   const { user } = useAuth();
-  const [selectedFilter, setSelectedFilter] = useState("all"); // For difficulty filter
-  const [selectedCategory, setSelectedCategory] = useState("all"); // For category filter
+  const [selectedFilter, setSelectedFilter] = useState("all"); 
+  const [selectedCategory, setSelectedCategory] = useState("all"); 
   const [games, setGames] = useState([]);
   const [filteredGames, setFilteredGames] = useState([]); // Stores filtered results
 
-  // Fetch games from Firebase
+  // Fetches games from Firebase
   useEffect(() => {
     const gamesRef = ref(database, "games");
 
@@ -27,18 +27,18 @@ const Home = ({ showAddGame, setShowAddGame }) => {
           ...gamesData[key],
         }));
         setGames(gamesArray);
-        setFilteredGames(gamesArray); // Initialize with full list
+        setFilteredGames(gamesArray); 
       }
     });
   }, []);
 
-  // Apply filters for both difficulty and category when either selectedFilter or selectedCategory changes
+
   useEffect(() => {
     let filtered = games;
 
     // Normalize case for comparison
-    const normalizedFilter = selectedFilter.toLowerCase(); // Make the selected filter lowercase
-    const normalizedCategory = selectedCategory.toLowerCase(); // Make the selected category lowercase
+    const normalizedFilter = selectedFilter.toLowerCase();
+    const normalizedCategory = selectedCategory.toLowerCase(); 
 
     // Filter by difficulty
     if (normalizedFilter !== "all") {
@@ -88,10 +88,10 @@ const Home = ({ showAddGame, setShowAddGame }) => {
       .catch((error) => console.error("Error updating game:", error));
   };
 
-  // Function to search games
+
   const handleSearch = (query) => {
     if (!query) {
-      setFilteredGames(games); // Reset to all games if search is empty
+      setFilteredGames(games);
       return;
     }
     const filtered = games.filter((game) =>
